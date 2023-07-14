@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 from PIL import Image, ImageTk
+from student import Student
 
 
 class Face_Recognition_System:
@@ -33,7 +34,7 @@ class Face_Recognition_System:
         std_img_btn=std_img_btn.resize((240,180),Image.ANTIALIAS)
         self.std_img1=ImageTk.PhotoImage(std_img_btn)
 
-        std_b1 = Button(bg_img, image=self.std_img1,cursor="hand2")
+        std_b1 = Button(bg_img,command=self.student_details,image=self.std_img1,cursor="hand2")
         std_b1.place(x=200,y=100,width=240,height=180)
         
         std_b1_1 = Button(bg_img,text="Student Details",cursor="hand2",font=("tahoma",20,"bold"),bg="white",fg="navyblue")
@@ -94,6 +95,10 @@ class Face_Recognition_System:
         exi_b1_1 = Button(bg_img,text="Exit",cursor="hand2",font=("tahoma",15,"bold"),bg="white",fg="navyblue")
         exi_b1_1.place(x=900,y=510,width=240,height=45)
 
+        # ==================Functions Buttons=====================
+    def student_details(self):
+        self.new_window=Toplevel(self.root)
+        self.app=Student(self.new_window)
 
     
         
