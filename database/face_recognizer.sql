@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 15, 2023 at 11:50 AM
+-- Generation Time: Jul 15, 2023 at 12:29 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -44,13 +44,6 @@ CREATE TABLE `student` (
   `Teacher` varchar(45) DEFAULT NULL,
   `PhotoSample` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `student`
---
-
-INSERT INTO `student` (`Dep`, `Course`, `Year`, `Semester`, `Student_id`, `Name`, `Division`, `Roll_no`, `Gender`, `Dob`, `Email`, `Phone_no`, `Address`, `Teacher`, `PhotoSample`) VALUES
-('BSMATH', 'FE', '2018-22', 'Semester-7', 2, 'fgf', 'Morning', 'fgfd', 'Male', 'dsf', 'efd', 'dsf', 'dfsd', 'dsfsd', '');
 
 --
 -- Indexes for dumped tables
