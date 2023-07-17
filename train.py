@@ -1,73 +1,85 @@
-from tkinter import* 
+from sys import path
+from tkinter import*
 from tkinter import ttk
 from PIL import Image,ImageTk
-from tkinter import messagebox
+import os
 import mysql.connector
 import cv2
-import os
 import numpy as np
+from tkinter import messagebox
 
 class Train:
+
     def __init__(self,root):
         self.root=root
         self.root.geometry("1366x768+0+0")
-        self.root.title("Student Pannel")
+        self.root.title("Train Pannel")
+
+        # This part is image labels setting start 
+        # first header image  
+        img=Image.open("Images_GUI/banner.jpg")
+        img=img.resize((1366,130),Image.ANTIALIAS)
+        self.photoimg=ImageTk.PhotoImage(img)
+
+        # set image as lable
+        f_lb1 = Label(self.root,image=self.photoimg)
+        f_lb1.place(x=0,y=0,width=1366,height=130)
+
+        # backgorund image 
+        bg1=Image.open("Images_GUI/t_bg1.jpg")
+        bg1=bg1.resize((1366,768),Image.ANTIALIAS)
+        self.photobg1=ImageTk.PhotoImage(bg1)
+
+        # set image as lable
+        bg_img = Label(self.root,image=self.photobg1)
+        bg_img.place(x=0,y=130,width=1366,height=768)
 
 
-        title_lb1 = Label(self.root,text="Train Data Set",font=("verdana",30,"bold"),bg="white",fg="red")
+        #title section
+        title_lb1 = Label(bg_img,text="Welcome to Training Pannel",font=("verdana",30,"bold"),bg="white",fg="navyblue")
         title_lb1.place(x=0,y=0,width=1366,height=45)
 
-        # Image which will be on top
-        img_top=Image.open("face_recognize_student_attendence_system\Images\developer.png")         
-        img_top=img_top.resize((1530,325),Image.ANTIALIAS)  #Antialias lea high level image lai low level mah convert garxa
-        self.photoimg_top=ImageTk.PhotoImage(img_top)
+        # Create buttons below the section 
+        # ------------------------------------------------------------------------------------------------------------------- 
+        # Training button 1
+        std_img_btn=Image.open("Images_GUI/t_btn1.png")
+        std_img_btn=std_img_btn.resize((180,180),Image.ANTIALIAS)
+        self.std_img1=ImageTk.PhotoImage(std_img_btn)
 
-        f_lbl=Label(self.root,image=self.photoimg_top)
-        f_lbl.place(x=0, y=55,width=1530,height=325)
+        std_b1 = Button(bg_img,command=self.train_classifier,image=self.std_img1,cursor="hand2")
+        std_b1.place(x=600,y=170,width=180,height=180)
 
-        # Creating Button
-        b1_1=Button(self.root,text="TRAIN DATA",command=self.train_classifier,cursor="hand2",font=("Algerian",25,"bold"),bg="green",fg="white")
-        b1_1.place(x=500,y=450,width=300,height=150)
+        std_b1_1 = Button(bg_img,command=self.train_classifier,text="Train Dataset",cursor="hand2",font=("tahoma",15,"bold"),bg="white",fg="navyblue")
+        std_b1_1.place(x=600,y=350,width=180,height=45)
 
-        # Image which will be on Bottom of the page..
-        img_bottom=Image.open("face_recognize_student_attendence_system\Images\developer.png")
-        img_bottom=img_bottom.resize((1530,325),Image.ANTIALIAS)  #Antialias lea high level image lai low level mah convert garxa
-        self.photoimg_bottom=ImageTk.PhotoImage(img_bottom)
-
-        f_lbl=Label(self.root,image=self.photoimg_bottom)
-        f_lbl.place(x=0, y=440,width=1530,height=325)
-
+    # ==================Create Function of Traing===================
     def train_classifier(self):
-        data_dir = ("data")
-        path=[os.path.join(data_dir,file) for  file in os.listdir(data_dir)]
-
+        data_dir=("data_img")
+        path=[os.path.join(data_dir,file) for file in os.listdir(data_dir)]
+        
         faces=[]
         ids=[]
 
         for image in path:
-            img=Image.open(image).convert('L')  # Gray Scale Image
-            imageNp=np.array(img,'uint8') # unont8 is a datatype here
-            id=int(os.path.split(image)[1].split('.')[1]) 
+            img=Image.open(image).convert('L') # conver in gray scale 
+            imageNp = np.array(img,'uint8')
+            id=int(os.path.split(image)[1].split('.')[1])
 
             faces.append(imageNp)
             ids.append(id)
+
             cv2.imshow("Training",imageNp)
             cv2.waitKey(1)==13
+        
         ids=np.array(ids)
-
-        # Train the Classifier and Saving
-        clf=cv2.face.LBPHFaceRecognizer_create()
+        
+        #=================Train Classifier=============
+        clf= cv2.face.LBPHFaceRecognizer_create()
         clf.train(faces,ids)
         clf.write("classifier.xml")
+
         cv2.destroyAllWindows()
-        speak_va("Training datasets completed successfully!")
-        messagebox.showinfo("Result","Training datasets completed successfully!",parent=self.root)
-        # self.root.destroy()
-
-        
-
-
-
+        messagebox.showinfo("Result","Training Dataset Complated!",parent=self.root)
 
 
 

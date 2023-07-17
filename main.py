@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import ttk
 from PIL import Image, ImageTk
 from student import Student
+from train import Train
 
 
 class Face_Recognition_System:
@@ -67,7 +68,7 @@ class Face_Recognition_System:
         tra_img_btn=tra_img_btn.resize((240,180),Image.ANTIALIAS)
         self.tra_img1=ImageTk.PhotoImage(tra_img_btn)
 
-        tra_b1 = Button(bg_img,image=self.tra_img1,cursor="hand2",)
+        tra_b1 = Button(bg_img,command=self.train_dataset,image=self.tra_img1,cursor="hand2",)
         tra_b1.place(x=200,y=330,width=240,height=180)
 
         tra_b1_1 = Button(bg_img,text="Data Train",cursor="hand2",font=("tahoma",15,"bold"),bg="white",fg="navyblue")
@@ -84,7 +85,7 @@ class Face_Recognition_System:
         pho_b1_1 = Button(bg_img,text="Photos",cursor="hand2",font=("tahoma",15,"bold"),bg="white",fg="navyblue")
         pho_b1_1.place(x=550,y=510,width=240,height=45)
         
-        # exit   button 8
+        # exit   button 6
         exi_img_btn=Image.open("Images_GUI/exi.jpg")
         exi_img_btn=exi_img_btn.resize((240,180),Image.ANTIALIAS)
         self.exi_img1=ImageTk.PhotoImage(exi_img_btn)
@@ -99,6 +100,10 @@ class Face_Recognition_System:
     def student_details(self):
         self.new_window=Toplevel(self.root)
         self.app=Student(self.new_window)
+        
+    def train_dataset(self):
+        self.new_window=Toplevel(self.root)
+        self.app=Train(self.new_window)
 
     
         
