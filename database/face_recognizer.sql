@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 15, 2023 at 12:29 PM
+-- Generation Time: Jul 18, 2023 at 12:09 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -28,32 +28,22 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `student` (
-  `Dep` varchar(45) DEFAULT NULL,
-  `Course` varchar(45) DEFAULT NULL,
-  `Year` varchar(45) DEFAULT NULL,
-  `Semester` varchar(45) DEFAULT NULL,
-  `Student_id` int(11) NOT NULL,
-  `Name` varchar(45) DEFAULT NULL,
-  `Division` varchar(45) DEFAULT NULL,
-  `Roll_no` varchar(45) DEFAULT NULL,
-  `Gender` varchar(45) DEFAULT NULL,
-  `Dob` varchar(45) DEFAULT NULL,
-  `Email` varchar(45) DEFAULT NULL,
-  `Phone_no` varchar(45) DEFAULT NULL,
-  `Address` varchar(45) DEFAULT NULL,
-  `Teacher` varchar(45) DEFAULT NULL,
-  `PhotoSample` varchar(45) DEFAULT NULL
+  `Student_ID` int(11) NOT NULL,
+  `Name` varchar(50) NOT NULL,
+  `Department` varchar(50) NOT NULL,
+  `Course` varchar(50) NOT NULL,
+  `Year` date NOT NULL,
+  `Semester` varchar(50) NOT NULL,
+  `Division` varchar(10) NOT NULL,
+  `Gender` varchar(10) NOT NULL,
+  `DOB` date NOT NULL,
+  `Mobile_No` int(11) NOT NULL,
+  `Address` varchar(50) NOT NULL,
+  `Roll_No` int(11) NOT NULL,
+  `Email` varchar(50) NOT NULL,
+  `Teacher_Name` varchar(50) NOT NULL,
+  `PhotoSample` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `student`
---
-ALTER TABLE `student`
-  ADD PRIMARY KEY (`Student_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
