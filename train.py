@@ -1,9 +1,6 @@
-from sys import path
 from tkinter import*
-from tkinter import ttk
 from PIL import Image,ImageTk
 import os
-import mysql.connector
 import cv2
 import numpy as np
 from tkinter import messagebox
@@ -61,7 +58,7 @@ class Train:
         ids=[]
 
         for image in path:
-            img=Image.open(image).convert('L') # conver in gray scale 
+            img=Image.open(image).convert('L') # convert in gray scale 
             imageNp = np.array(img,'uint8')
             id=int(os.path.split(image)[1].split('.')[1])
 
