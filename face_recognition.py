@@ -16,7 +16,7 @@ class Face_Recognition:
         # This part is image labels setting start 
         # first header image  
         img=Image.open("Images_GUI/banner.jpg")
-        img=img.resize((1366,130),Image.ANTIALIAS)
+        img=img.resize((1366,130),Image.Resampling.LANCZOS)
         self.photoimg=ImageTk.PhotoImage(img)
 
         # set image as lable
@@ -25,7 +25,7 @@ class Face_Recognition:
 
         # backgorund image 
         bg1=Image.open(r"Images_GUI\bg2.jpg")
-        bg1=bg1.resize((1366,768),Image.ANTIALIAS)
+        bg1=bg1.resize((1366,768),Image.Resampling.LANCZOS)
         self.photobg1=ImageTk.PhotoImage(bg1)
 
         # set image as lable
@@ -40,7 +40,7 @@ class Face_Recognition:
         # Create buttons below the section 
         # ------------------------------------------------------------------------------------------------------------------- 
         std_img_btn=Image.open(r"Images_GUI\f_det.jpg")
-        std_img_btn=std_img_btn.resize((180,180),Image.ANTIALIAS)
+        std_img_btn=std_img_btn.resize((180,180),Image.Resampling.LANCZOS)
         self.std_img1=ImageTk.PhotoImage(std_img_btn)
 
         std_b1 = Button(bg_img,command=self.face_recog,image=self.std_img1,cursor="hand2")

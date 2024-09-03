@@ -15,7 +15,7 @@ class Train:
         # This part is image labels setting start 
         # first header image  
         img=Image.open("Images_GUI/banner.jpg")
-        img=img.resize((1366,130),Image.ANTIALIAS)
+        img=img.resize((1366,130),Image.Resampling.LANCZOS)
         self.photoimg=ImageTk.PhotoImage(img)
 
         # set image as lable
@@ -24,7 +24,7 @@ class Train:
 
         # backgorund image 
         bg1=Image.open("Images_GUI/t_bg1.jpg")
-        bg1=bg1.resize((1366,768),Image.ANTIALIAS)
+        bg1=bg1.resize((1366,768),Image.Resampling.LANCZOS)
         self.photobg1=ImageTk.PhotoImage(bg1)
 
         # set image as lable
@@ -40,7 +40,7 @@ class Train:
         # ------------------------------------------------------------------------------------------------------------------- 
         # Training button 1
         std_img_btn=Image.open("Images_GUI/t_btn1.png")
-        std_img_btn=std_img_btn.resize((180,180),Image.ANTIALIAS)
+        std_img_btn=std_img_btn.resize((180,180),Image.Resampling.LANCZOS)
         self.std_img1=ImageTk.PhotoImage(std_img_btn)
 
         std_b1 = Button(bg_img,command=self.train_classifier,image=self.std_img1,cursor="hand2")

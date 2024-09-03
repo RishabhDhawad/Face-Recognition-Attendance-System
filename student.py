@@ -221,11 +221,6 @@ class Student:
         take_photo_btn.grid(row=0,column=4,padx=15,pady=10,sticky=W)
 
         
-
-
-
-
-
         #----------------------------------------------------------------------
         # Right Label Frame 
         right_frame = LabelFrame(main_frame,bd=2,bg="white",relief=RIDGE,text="Student Details",font=("verdana",12,"bold"),fg="navyblue")

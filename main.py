@@ -13,14 +13,14 @@ class Face_Recognition_System:
         self.root.title("Smart Attendance System")
         
         img = Image.open("Images_GUI/facialrecognition.png")
-        img = img.resize((1366,130),Image.ANTIALIAS)
+        img = img.resize((1366,130),Image.Resampling.LANCZOS)
         self.photoimg = ImageTk.PhotoImage(img)
         
         f_lb1 = Label(self.root, image = self.photoimg)
         f_lb1.place(x = 0, y = 0, width = 1366, height = 130)
         
         bg1=Image.open("Images_GUI/bg2.jpg")
-        bg1=bg1.resize((1366,768),Image.ANTIALIAS)
+        bg1=bg1.resize((1366,768),Image.Resampling.LANCZOS)
         self.photobg1=ImageTk.PhotoImage(bg1)
 
         bg_img = Label(self.root,image=self.photobg1)
@@ -33,7 +33,7 @@ class Face_Recognition_System:
         # ------------------------------------------------------------------------------------------------------------------- 
         # student button 1
         std_img_btn=Image.open("Images_GUI/std1.jpg")
-        std_img_btn=std_img_btn.resize((240,180),Image.ANTIALIAS)
+        std_img_btn=std_img_btn.resize((240,180),Image.Resampling.LANCZOS)
         self.std_img1=ImageTk.PhotoImage(std_img_btn)
 
         std_b1 = Button(bg_img,command=self.student_details,image=self.std_img1,cursor="hand2")
@@ -44,7 +44,7 @@ class Face_Recognition_System:
         
         # Detect Face  button 2
         det_img_btn=Image.open("Images_GUI\det1.jpg")
-        det_img_btn=det_img_btn.resize((240,180),Image.ANTIALIAS)
+        det_img_btn=det_img_btn.resize((240,180),Image.Resampling.LANCZOS)
         self.det_img1=ImageTk.PhotoImage(det_img_btn)
 
         det_b1 = Button(bg_img,command=self.face_recognition,image=self.det_img1,cursor="hand2",)
@@ -55,7 +55,7 @@ class Face_Recognition_System:
                 
          # Train   button 3
         tra_img_btn=Image.open("Images_GUI/tra1.jpg")
-        tra_img_btn=tra_img_btn.resize((240,180),Image.ANTIALIAS)
+        tra_img_btn=tra_img_btn.resize((240,180),Image.Resampling.LANCZOS)
         self.tra_img1=ImageTk.PhotoImage(tra_img_btn)
 
         tra_b1 = Button(bg_img,command=self.train_dataset,image=self.tra_img1,cursor="hand2",)
@@ -66,7 +66,7 @@ class Face_Recognition_System:
         
         # Photo   button 4
         pho_img_btn=Image.open("Images_GUI/photos.png")
-        pho_img_btn=pho_img_btn.resize((240,180),Image.ANTIALIAS)
+        pho_img_btn=pho_img_btn.resize((240,180),Image.Resampling.LANCZOS)
         self.pho_img1=ImageTk.PhotoImage(pho_img_btn)
 
         pho_b1 = Button(bg_img,command=self.open_folder,image=self.pho_img1,cursor="hand2",)
@@ -77,7 +77,7 @@ class Face_Recognition_System:
         
         # exit   button 5
         exi_img_btn=Image.open("Images_GUI/exi.jpg")
-        exi_img_btn=exi_img_btn.resize((240,180),Image.ANTIALIAS)
+        exi_img_btn=exi_img_btn.resize((240,180),Image.Resampling.LANCZOS)
         self.exi_img1=ImageTk.PhotoImage(exi_img_btn)
 
         exi_b1 = Button(bg_img,command=self.close,image=self.exi_img1,cursor="hand2",)
